@@ -12,6 +12,7 @@ DurationPicker.propTypes = {
   }),
   maxHours: PropTypes.number,
   noHours: PropTypes.bool,
+  noSeconds: PropTypes.bool,
 };
 
 DurationPicker.defaultProps = {
@@ -19,6 +20,7 @@ DurationPicker.defaultProps = {
   onChange: () => {},
   initialDuration: { hours: 0, minutes: 0, seconds: 0 },
   noHours: false,
+  noSeconds: false,
 };
 
 function DurationPicker(props) {
@@ -68,18 +70,21 @@ function DurationPicker(props) {
           initial={initialDuration.hours}
         />
       )}
+
       <DurationPickerColumn
         onChange={onChangeMinutes}
         unit="mins"
         isSmallScreen={isSmallScreen}
         initial={initialDuration.minutes}
       />
-      <DurationPickerColumn
-        onChange={onChangeSeconds}
-        unit="secs"
-        isSmallScreen={isSmallScreen}
-        initial={initialDuration.seconds}
-      />
+      {!noSeconds && (
+        <DurationPickerColumn
+          onChange={onChangeSeconds}
+          unit="secs"
+          isSmallScreen={isSmallScreen}
+          initial={initialDuration.seconds}
+        />
+      )}
     </div>
   );
 }
