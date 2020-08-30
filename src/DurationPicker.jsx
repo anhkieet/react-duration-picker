@@ -24,7 +24,7 @@ DurationPicker.defaultProps = {
 };
 
 function DurationPicker(props) {
-  const { onChange, maxHours, initialDuration, noHours } = props;
+  const { onChange, maxHours, initialDuration, noHours, noSeconds } = props;
   const [isSmallScreen, setIsSmallScreen] = useState(undefined);
   const [duration, setDuration] = useState(initialDuration);
 
